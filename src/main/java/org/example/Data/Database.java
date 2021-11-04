@@ -1,5 +1,7 @@
 package org.example.Data;
 
+import org.example.ConnectionFactory;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,22 +20,67 @@ public class Database {
         Connection connection = ConnectionFactory.getConnection();
         List<String> sqlInserts = new ArrayList<>();
         Collections.addAll(sqlInserts,
-                "INSERT INTO users values (1, 'Administrator', 'admin', 'ADMIN', 'password', true)",
-                "INSERT INTO users values (2, 'Employee', 'employee', 'EMPLOYEE', 'password', true)",
-                "INSERT INTO users values (3, 'Mr. Customer', 'mrcx', 'CUSTOMER', 'password', true)",
-                "INSERT INTO users values (4, 'Ms. Customer', 'mscx', 'CUSTOMER', 'password', true)",
-                "INSERT INTO accounts values (1, 5000000, false, false, false, false)",
-                "INSERT INTO accounts values (2, 500, false, false, false, false)",
-                "INSERT INTO accounts values (3, 2000, false, false, false, false)",
-                "INSERT INTO accounts values (4, 100, false, false, false, false)",
-                "INSERT INTO accounts values (5, 200, false, false, false, false)",
-                "INSERT INTO accounts values (6, 200, false, false, true, false)",
-                "INSERT INTO user2account values (3, 3)",
-                "INSERT INTO user2account values (3, 4)",
-                "INSERT INTO user2account values (3, 5)",
-                "INSERT INTO user2account values (3, 6)",
-                "INSERT INTO user2account values (4, 2)",
-                "INSERT INTO user2account values (4, 4)");
+                "INSERT INTO books values (9788433928016, 'Silk', 14.99)",
+                "INSERT INTO author values (1, 'Alessandro', 'Baricco')",
+                "INSERT INTO book2author values (9788433928016, 1)",
+
+                "INSERT INTO books values (9780590198592, 'Lioness Rampant', 9.95)",
+                "INSERT INTO author values (2, 'Tamora', 'Pierce')",
+                "INSERT INTO book2author values (9780590198592, 2)",
+
+                "INSERT INTO books values (9780345805249, 'This Is How You Lose Her', 19.37)",
+                "INSERT INTO author values (3, 'Junot', 'Diaz')",
+                "INSERT INTO book2author values (9780345805249, 3)",
+
+                "INSERT INTO books values (9780425289006, 'George Washington's Secret Six: The Spy Ring That Saved the American Revolution', 21.50)",
+                "INSERT INTO author values (4, 'Brian', 'Kilmeade')",
+                "INSERT INTO author values (5, 'Don', 'Yaeger')",
+                "INSERT INTO book2author values (9780425289006, 4)",
+                "INSERT INTO book2author values (9780425289006, 5)",
+
+                "INSERT INTO books values (9781400031511, 'One Step Behind', 9.99)",
+                "INSERT INTO author values (6, 'Henning', 'Mankell')",
+                "INSERT INTO author values (7, 'Ebba', 'Segerberg')",
+                "INSERT INTO book2author values (9781400031511, 6)",
+                "INSERT INTO book2author values (9781400031511, 7)",
+
+                "INSERT INTO books values (9780751557053, 'Galveston', 10.99)",
+                "INSERT INTO author values (8, 'Nic', 'Pizzolatto')",
+                "INSERT INTO book2author values (9780751557053, 8)",
+
+                "INSERT INTO books values (9780316109697, 'Julie and Julia: 365 Days, 524 Recipes, 1 Tiny Apartment Kitchen', 19.99)",
+                "INSERT INTO author values (9, 'Julie', 'Powell')",
+                "INSERT INTO book2author values (9780316109697, 9)",
+
+                "INSERT INTO books values (9780007255306, 'Wicked Lovely', 19.99)",
+                "INSERT INTO author values (10, 'Melissa', 'Marr')",
+                "INSERT INTO book2author values (9780007255306, 10)",
+
+                "INSERT INTO books values (9780671028374, 'Fatal Voyage', 19.99)",
+                "INSERT INTO author values (11, 'Kathy', 'Reichs')",
+                "INSERT INTO book2author values (9780671028374, 11)",
+
+                "INSERT INTO books values (9781497455047, 'Mud Vein', 7.99)",
+                "INSERT INTO author values (12, 'Tarryn', 'Fisher')",
+                "INSERT INTO book2author values (9781497455047, 12)",
+
+                "INSERT INTO books values (9780316349932, 'Career of Evil', 99.99)",
+                "INSERT INTO author values (13, 'Robert', 'Galbraith')",
+                "INSERT INTO author values (14, 'J.K.', 'Rowling')",
+                "INSERT INTO book2author values (9780316349932, 13)",
+                "INSERT INTO book2author values (9780316349932, 14)",
+
+                "INSERT INTO books values (9781417796441, 'The 5th Horseman', 99.99)",
+                "INSERT INTO author values (15, 'James', 'Patterson')",
+                "INSERT INTO author values (16, 'Maxine', 'Paetro')",
+                "INSERT INTO book2author values (9781417796441, 15)",
+                "INSERT INTO book2author values (9781417796441, 16)",
+
+                "INSERT INTO books values (9780345505729, 'Victims', 10.99)",
+                "INSERT INTO author values (17, 'Jonathan', 'Kellerman')",
+                "INSERT INTO book2author values (9780345505729, 17)",
+
+                "");
         try {
             Statement statement = connection.createStatement();
             for (String sqlInsert : sqlInserts) {
@@ -55,8 +102,8 @@ public class Database {
                 "  `LastName` varchar(50) DEFAULT NULL," +
                 "  PRIMARY KEY (`Id`)" +
                 ")";
-        String createBookTableSql = "CREATE TABLE `books` (" +
-                "  `Isbn` varchar(50) NOT NULL," +
+        String createBooksTableSql = "CREATE TABLE `books` (" +
+                "  `Isbn` int(13) NOT NULL," +
                 "  `Title` varchar(255) DEFAULT NULL," +
                 "  `Price` double(10,2) DEFAULT NULL," +
                 "  PRIMARY KEY (`Isbn`)" +
@@ -106,7 +153,7 @@ public class Database {
             }
 
             if (!tables.contains("books")) {
-                statement.addBatch(createBookTableSql);
+                statement.addBatch(createBooksTableSql);
             }
 
             if (!tables.contains("category")) {
