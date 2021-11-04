@@ -30,7 +30,7 @@ public class Database {
                 "INSERT INTO author values (3, 'Junot', 'Diaz')",
                 "INSERT INTO book2author values (9780345805249, 3)",
 
-                "INSERT INTO books values (9780425289006, 'George Washington's Secret Six: The Spy Ring That Saved the American Revolution', 21.50)",
+                "INSERT INTO books values (9780425289006, 'George Washingtons Secret Six', 21.50)",
                 "INSERT INTO author values (4, 'Brian', 'Kilmeade')",
                 "INSERT INTO author values (5, 'Don', 'Yaeger')",
                 "INSERT INTO book2author values (9780425289006, 4)",
@@ -94,43 +94,45 @@ public class Database {
 
         String getTablesSql = "show tables";
         String createAuthorTableSql = "CREATE TABLE `author` (" +
-                "  `Id` int NOT NULL AUTO_INCREMENT," +
-                "  `FirstName` varchar(50) DEFAULT NULL," +
-                "  `LastName` varchar(50) DEFAULT NULL," +
-                "  PRIMARY KEY (`Id`)" +
+                "`Id` int NOT NULL AUTO_INCREMENT," +
+                "`FirstName` varchar(50) DEFAULT NULL," +
+                "`LastName` varchar(50) DEFAULT NULL," +
+                "PRIMARY KEY (`Id`)" +
                 ")";
         String createBooksTableSql = "CREATE TABLE `books` (" +
-                "  `Isbn` varchar(50) NOT NULL," +
-                "  `Title` varchar(255) DEFAULT NULL," +
-                "  `Price` double(10,2) DEFAULT NULL," +
-                "  PRIMARY KEY (`Isbn`)" +
+                "`Isbn` varchar(50) NOT NULL," +
+                "`Title` varchar(255) DEFAULT NULL," +
+                "`Price` double(10,2) DEFAULT NULL," +
+                "PRIMARY KEY (`Isbn`)" +
                 ")";
         String createCategoryTableSql = "CREATE TABLE `category` (" +
-                "  `Id` int NOT NULL AUTO_INCREMENT," +
-                "  `Category` varchar(50) DEFAULT NULL," +
-                "  PRIMARY KEY (`Id`)" +
+                "`Id` int NOT NULL AUTO_INCREMENT," +
+                "`Category` varchar(50) DEFAULT NULL," +
+                "PRIMARY KEY (`Id`)" +
                 ")";
         String createBook2CatagorySql = "CREATE TABLE `book2category` (" +
                 "`Book_id` varchar(50) NOT NULL," +
                 "`Category_id` int NOT NULL," +
                 "KEY `Book_id` (`Book_id`)," +
                 "KEY `Category_id` (`Category_id`)," +
+                "PRIMARY KEY (`Book_id`, `Category_id`)," +
                 "CONSTRAINT `book2category_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
                 "CONSTRAINT `book2category_ibfk_2` FOREIGN KEY (`Category_id`) REFERENCES `category` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")";
         String createBook2AuthorTable = "CREATE TABLE `book2author` (" +
-                "  `Book_id` varchar(50) NOT NULL," +
-                "  `Author_id` int NOT NULL," +
-                "  KEY `Book_id` (`Book_id`)," +
-                "  KEY `Author_id` (`Author_id`)," +
-                "  CONSTRAINT `book2author_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
-                "  CONSTRAINT `book2author_ibfk_2` FOREIGN KEY (`Author_id`) REFERENCES `author` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
+                "`Book_id` varchar(50) NOT NULL," +
+                "`Author_id` int NOT NULL," +
+                "KEY `Book_id` (`Book_id`)," +
+                "KEY `Author_id` (`Author_id`)," +
+                "PRIMARY KEY (`Book_id`, `Author_id`)," +
+                "CONSTRAINT `book2author_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "CONSTRAINT `book2author_ibfk_2` FOREIGN KEY (`Author_id`) REFERENCES `author` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")";
         String createUserTableSql = "CREATE TABLE `user` (" +
-                "  `Id` int NOT NULL AUTO_INCREMENT," +
-                "  `Username` varchar(50) DEFAULT NULL," +
-                "  `Password` varchar(50) DEFAULT NULL," +
-                "  PRIMARY KEY (`Id`)" +
+                "`Id` int NOT NULL AUTO_INCREMENT," +
+                "`Username` varchar(50) DEFAULT NULL," +
+                "`Password` varchar(50) DEFAULT NULL," +
+                "PRIMARY KEY (`Id`)" +
                 ")";
 
         try (Statement statement = connection.createStatement()) {
