@@ -112,20 +112,20 @@ public class Database {
                 "  PRIMARY KEY (`Id`)" +
                 ")";
         String createBook2CatagorySql = "CREATE TABLE `book2category` (" +
-                "  `Book_id` varchar(50) NOT NULL," +
-                "  `Category_id` int NOT NULL," +
-                "  KEY `Book_id` (`Book_id`)," +
-                "  KEY `Category_id` (`Category_id`)," +
-                "  CONSTRAINT `book2category_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`)," +
-                "  CONSTRAINT `book2category_ibfk_2` FOREIGN KEY (`Category_id`) REFERENCES `category` (`Id`)" +
+                "`Book_id` int(13) NOT NULL," +
+                "`Category_id` int NOT NULL," +
+                "KEY `Book_id` (`Book_id`)," +
+                "KEY `Category_id` (`Category_id`)," +
+                "CONSTRAINT `book2category_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "CONSTRAINT `book2category_ibfk_2` FOREIGN KEY (`Category_id`) REFERENCES `category` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")";
         String createBook2AuthorTable = "CREATE TABLE `book2author` (" +
-                "  `Book_id` varchar(50) NOT NULL," +
+                "  `Book_id` int(13) NOT NULL," +
                 "  `Author_id` int NOT NULL," +
                 "  KEY `Book_id` (`Book_id`)," +
                 "  KEY `Author_id` (`Author_id`)," +
-                "  CONSTRAINT `book2author_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`)," +
-                "  CONSTRAINT `book2author_ibfk_2` FOREIGN KEY (`Author_id`) REFERENCES `author` (`Id`)" +
+                "  CONSTRAINT `book2author_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
+                "  CONSTRAINT `book2author_ibfk_2` FOREIGN KEY (`Author_id`) REFERENCES `author` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")";
         String createUserTableSql = "CREATE TABLE `user` (" +
                 "  `Id` int NOT NULL AUTO_INCREMENT," +
