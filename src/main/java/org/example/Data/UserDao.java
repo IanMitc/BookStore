@@ -1,9 +1,11 @@
 package org.example.Data;
 
+import java.sql.SQLException;
+
 public interface UserDao {
 
-    void addUser(String username, String password);
+    void addUser(String username, String password) throws DuplicateUserException;
 
-    boolean verifyUser(String username, String password);
+    User getUser(String username) throws UserNotFoundException;
 
 }
