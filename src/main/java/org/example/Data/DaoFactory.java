@@ -2,6 +2,8 @@ package org.example.Data;
 
 import org.example.AuthorDaoImpl;
 import org.example.BookDaoImpl;
+import org.example.CategoryDaoImpl;
+import org.example.UserDaoImpl;
 
 public class DaoFactory {
 
@@ -14,7 +16,7 @@ public class DaoFactory {
 
     public static AuthorDao getAuthorDao() {
         if(authorDao == null) {
-            //authorDao =  new AuthorDaoImpl();
+            authorDao = (AuthorDao) new AuthorDaoImpl();
         }
         return authorDao;
     }
@@ -28,14 +30,14 @@ public class DaoFactory {
 
     public static CategoryDao getCategoryDao() {
         if(categoryDao == null) {
-
+            categoryDao = new CategoryDaoImpl();
         }
         return categoryDao;
     }
 
     public static UserDao getUserDao() {
         if(userDao == null) {
-
+            userDao = new UserDaoImpl();
         }
         return userDao;
     }

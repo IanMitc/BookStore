@@ -5,7 +5,7 @@ public class Category {
     int id;
     String category;
 
-    public Category() {
+    public Category(int id, String category) {
     }
 
     public int getId() {
