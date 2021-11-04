@@ -76,9 +76,8 @@ public class Database {
 
                 "INSERT INTO books values (9780345505729, 'Victims', 10.99)",
                 "INSERT INTO author values (17, 'Jonathan', 'Kellerman')",
-                "INSERT INTO book2author values (9780345505729, 17)",
-
-                "");
+                "INSERT INTO book2author values (9780345505729, 17)"
+        );
         try {
             Statement statement = connection.createStatement();
             for (String sqlInsert : sqlInserts) {
