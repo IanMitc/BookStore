@@ -1,13 +1,15 @@
 package org.example;
 
+import org.example.Data.Database;
+
 /**
  * Hello world!
  *
  */
-public class App 
+public class BookStore
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Database.initialize();
     }
 }
