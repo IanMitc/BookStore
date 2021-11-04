@@ -103,7 +103,7 @@ public class Database {
                 "INSERT INTO book2author values (9780345505729, 17)",
                 "INSERT INTO book2category values (9780345505729, 1)"
 
-                );
+        );
         try {
             Statement statement = connection.createStatement();
             for (String sqlInsert : sqlInserts) {

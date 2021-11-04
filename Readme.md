@@ -1,11 +1,17 @@
-###Name of Challenge: 
+### Name of Challenge:
+
 * Book Store
-###Type: 
+
+### Type:
+
 * Console App
-###Technologies: 
+
+### Technologies:
+
 * Java, MySQL, JDBC
 
-##User Stories
+## User Stories
+
 1. User need to register and login first
 2. Show Categories like (Technology, Literature, Fiction etc)
 3. User can select category to get the list of books belong to that category
@@ -15,7 +21,8 @@
 7. when select buy add book into cart and cancel go back to previous menu
 8. View cart and place the order
 
-##Instruction
+## Instruction
+
 1. form a team of two
 2. create github repo
 3. create two branch each with team member name

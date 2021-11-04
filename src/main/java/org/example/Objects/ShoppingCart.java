@@ -10,8 +10,9 @@ public class ShoppingCart {
     private ShoppingCart() {
         books = new ArrayList<>();
     }
+
     public static ShoppingCart getShoppingCart() {
-        if (shoppingCart == null){
+        if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
         return shoppingCart;
@@ -24,18 +25,18 @@ public class ShoppingCart {
     public double getTotal() {
         double total = 0;
 
-        for (Book b : books){
+        for (Book b : books) {
             total += b.getPrice();
         }
 
         return total;
     }
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         books.add(book);
     }
 
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         books.remove(book);
     }
 }

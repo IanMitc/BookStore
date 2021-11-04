@@ -1,14 +1,11 @@
 package org.example.UI.Menus.Shared.Options;
 
-import com.mitchell.ian.Permissions.Permissions;
 import org.example.Data.DaoFactory;
 import org.example.Data.UserDao;
 import org.example.Objects.User;
 import org.example.UI.Menus.Customer.CustomerMenu;
 import org.example.UI.Utility.Ask;
 import org.example.UI.Utility.Clear;
-
-import java.util.Currency;
 
 public class LoginOption {
     public static void execute() {
@@ -28,7 +25,6 @@ public class LoginOption {
             CustomerMenu.show();
         } else {
             System.out.println("Login Failed");
-            return;
         }
     }
 }

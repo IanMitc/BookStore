@@ -1,7 +1,6 @@
 package org.example.Data;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -10,10 +9,11 @@ public class ConnectionFactory {
 
     private static Connection connection = null;
 
-    private ConnectionFactory() {}
+    private ConnectionFactory() {
+    }
 
     public static Connection getConnection() {
-        if(connection == null){
+        if (connection == null) {
             ResourceBundle bundle = ResourceBundle.getBundle("dbConfig");
             String url = bundle.getString("url");
             String username = bundle.getString("username");
