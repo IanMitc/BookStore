@@ -1,7 +1,5 @@
 package org.example.Data;
 
-import org.example.ConnectionFactory;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

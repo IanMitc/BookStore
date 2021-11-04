@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Objects;
 
 //Class for book objects created from the database
 public class Book {
