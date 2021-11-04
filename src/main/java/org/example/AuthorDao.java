@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface AuthorDao {
 
-    List<Author> getAuthor(Book book) throws AuthorNotFoundException;
+    public Author getAuthor(int id) throws AuthorNotFoundException;
 
 }
