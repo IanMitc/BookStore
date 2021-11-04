@@ -85,7 +85,7 @@ public class Database {
             }
             statement.executeBatch();
         } catch (SQLException e) {
-            //System.out.println(e.getSQLState());
+            //e.printStackTrace();
         }
     }
 
@@ -100,7 +100,7 @@ public class Database {
                 "  PRIMARY KEY (`Id`)" +
                 ")";
         String createBooksTableSql = "CREATE TABLE `books` (" +
-                "  `Isbn` int(13) NOT NULL," +
+                "  `Isbn` varchar(50) NOT NULL," +
                 "  `Title` varchar(255) DEFAULT NULL," +
                 "  `Price` double(10,2) DEFAULT NULL," +
                 "  PRIMARY KEY (`Isbn`)" +
@@ -111,7 +111,7 @@ public class Database {
                 "  PRIMARY KEY (`Id`)" +
                 ")";
         String createBook2CatagorySql = "CREATE TABLE `book2category` (" +
-                "`Book_id` int(13) NOT NULL," +
+                "`Book_id` varchar(50) NOT NULL," +
                 "`Category_id` int NOT NULL," +
                 "KEY `Book_id` (`Book_id`)," +
                 "KEY `Category_id` (`Category_id`)," +
@@ -119,7 +119,7 @@ public class Database {
                 "CONSTRAINT `book2category_ibfk_2` FOREIGN KEY (`Category_id`) REFERENCES `category` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")";
         String createBook2AuthorTable = "CREATE TABLE `book2author` (" +
-                "  `Book_id` int(13) NOT NULL," +
+                "  `Book_id` varchar(50) NOT NULL," +
                 "  `Author_id` int NOT NULL," +
                 "  KEY `Book_id` (`Book_id`)," +
                 "  KEY `Author_id` (`Author_id`)," +
