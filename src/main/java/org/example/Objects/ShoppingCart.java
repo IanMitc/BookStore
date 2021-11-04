@@ -1,9 +1,21 @@
 package org.example.Objects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private List<Book> books;
+    private static List<Book> books;
+    private static ShoppingCart shoppingCart = null;
+
+    private ShoppingCart() {
+        books = new ArrayList<>();
+    }
+    public static ShoppingCart getShoppingCart() {
+        if (shoppingCart == null){
+            shoppingCart = new ShoppingCart();
+        }
+        return shoppingCart;
+    }
 
     public List<Book> getBooks() {
         return books;
