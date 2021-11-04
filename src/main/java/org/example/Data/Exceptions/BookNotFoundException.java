@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Data.Exceptions;
 
 public class BookNotFoundException extends Exception{
 

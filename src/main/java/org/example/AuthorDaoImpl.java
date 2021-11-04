@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.Data.Exceptions.AuthorNotFoundException;
+import org.example.Objects.Author;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +13,10 @@ import java.util.List;
 public class AuthorDaoImpl implements AuthorDao{
 
     Connection connection;
+
+    public AuthorDaoImpl() {
+        this.connection = connection;
+    }
 
     @Override
     public Author getAuthor(int id) throws AuthorNotFoundException {

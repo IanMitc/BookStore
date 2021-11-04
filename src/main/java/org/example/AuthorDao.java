@@ -1,6 +1,7 @@
 package org.example;
 
-import java.util.List;
+import org.example.Data.Exceptions.AuthorNotFoundException;
+import org.example.Objects.Author;
 
 public interface AuthorDao {
 

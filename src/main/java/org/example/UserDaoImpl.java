@@ -1,11 +1,16 @@
 package org.example;
 
+import org.example.Data.ConnectionFactory;
+import org.example.Data.Exceptions.UserNotFoundException;
+import org.example.Data.UserDao;
+import org.example.Objects.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
     Connection connection;
 

@@ -1,10 +1,12 @@
 package org.example.Data;
 
-import java.sql.SQLException;
+import org.example.Data.Exceptions.UserNotFoundException;
+import org.example.DuplicateUserException;
+import org.example.Objects.User;
 
 public interface UserDao {
 
-    void addUser(String username, String password) throws DuplicateUserException;
+    void addUser(String username, String password) throws DuplicateUserException, DuplicateUserException;
 
     User getUser(String username) throws UserNotFoundException;
 
