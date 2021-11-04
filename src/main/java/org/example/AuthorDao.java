@@ -1,7 +1,9 @@
 package org.example;
 
+import java.util.List;
+
 public interface AuthorDao {
 
-    Author getAuthor();
+    List<Author> getAuthor(Book book) throws AuthorNotFoundException;
 
 }

@@ -1,18 +1,22 @@
 package org.example;
 
+import java.util.List;
+
 //Class for book objects created from the database
 public class Book {
 
-    String ISBN;
-    String Title;
-    int price;
+    private String ISBN;
+    private String title;
+    private double price;
+    private List<Author> authors;
+    private List<Category> categories;
 
     public Book() {
     }
 
-    public Book(String ISBN, String title, int price) {
+    public Book(String ISBN, String title, double price) {
         this.ISBN = ISBN;
-        Title = title;
+        this.title = title;
         this.price = price;
     }
 
@@ -27,18 +31,20 @@ public class Book {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        title = title;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
+
+
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BookDao {
 
-    List<Book> getBooks();
+    List<Book> getBooks() throws NoBooksException;
 
     Book getBook(String isbn);
 }
