@@ -13,7 +13,7 @@ import java.util.List;
 public class Database {
     public static void initialize() {
         initializeTables();
-        //populateDefaultData();
+        populateDefaultData();
     }
 
     private static void populateDefaultData() {
