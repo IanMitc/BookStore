@@ -18,66 +18,92 @@ public class Database {
         Connection connection = ConnectionFactory.getConnection();
         List<String> sqlInserts = new ArrayList<>();
         Collections.addAll(sqlInserts,
+                "INSERT INTO category values (1, '')",
+                "INSERT INTO category values (1, 'Romance')",
+                "INSERT INTO category values (2, 'Hardcore Bizarro Fiction')",
+                "INSERT INTO category values (3, 'Spoetry')",
+                "INSERT INTO category values (4, 'Cashier Memoir')",
+                "INSERT INTO category values (5, 'Oulipo Literature')",
+
                 "INSERT INTO books values (9788433928016, 'Silk', 14.99)",
                 "INSERT INTO author values (1, 'Alessandro', 'Baricco')",
                 "INSERT INTO book2author values (9788433928016, 1)",
+                "INSERT INTO book2category values (9788433928016, 2)",
+                "INSERT INTO book2category values (9788433928016, 1)",
 
                 "INSERT INTO books values (9780590198592, 'Lioness Rampant', 9.95)",
                 "INSERT INTO author values (2, 'Tamora', 'Pierce')",
                 "INSERT INTO book2author values (9780590198592, 2)",
+                "INSERT INTO book2category values (9780590198592, 1)",
 
                 "INSERT INTO books values (9780345805249, 'This Is How You Lose Her', 19.37)",
                 "INSERT INTO author values (3, 'Junot', 'Diaz')",
                 "INSERT INTO book2author values (9780345805249, 3)",
+                "INSERT INTO book2category values (9780345805249, 2)",
+                "INSERT INTO book2category values (9780345805249, 5)",
+                "INSERT INTO book2category values (9780345805249, 4)",
 
                 "INSERT INTO books values (9780425289006, 'George Washingtons Secret Six', 21.50)",
                 "INSERT INTO author values (4, 'Brian', 'Kilmeade')",
                 "INSERT INTO author values (5, 'Don', 'Yaeger')",
                 "INSERT INTO book2author values (9780425289006, 4)",
                 "INSERT INTO book2author values (9780425289006, 5)",
+                "INSERT INTO book2category values (9780425289006, 3)",
 
                 "INSERT INTO books values (9781400031511, 'One Step Behind', 9.99)",
                 "INSERT INTO author values (6, 'Henning', 'Mankell')",
                 "INSERT INTO author values (7, 'Ebba', 'Segerberg')",
                 "INSERT INTO book2author values (9781400031511, 6)",
                 "INSERT INTO book2author values (9781400031511, 7)",
+                "INSERT INTO book2category values (9781400031511, 2)",
 
                 "INSERT INTO books values (9780751557053, 'Galveston', 10.99)",
                 "INSERT INTO author values (8, 'Nic', 'Pizzolatto')",
                 "INSERT INTO book2author values (9780751557053, 8)",
+                "INSERT INTO book2category values (9780751557053, 4)",
 
                 "INSERT INTO books values (9780316109697, 'Julie and Julia: 365 Days, 524 Recipes, 1 Tiny Apartment Kitchen', 19.99)",
                 "INSERT INTO author values (9, 'Julie', 'Powell')",
                 "INSERT INTO book2author values (9780316109697, 9)",
+                "INSERT INTO book2category values (9780316109697, 1)",
+                "INSERT INTO book2category values (9780316109697, 5)",
 
                 "INSERT INTO books values (9780007255306, 'Wicked Lovely', 19.99)",
                 "INSERT INTO author values (10, 'Melissa', 'Marr')",
                 "INSERT INTO book2author values (9780007255306, 10)",
+                "INSERT INTO book2category values (9780007255306, 3)",
 
                 "INSERT INTO books values (9780671028374, 'Fatal Voyage', 19.99)",
                 "INSERT INTO author values (11, 'Kathy', 'Reichs')",
                 "INSERT INTO book2author values (9780671028374, 11)",
+                "INSERT INTO book2category values (9780671028374, 5)",
 
                 "INSERT INTO books values (9781497455047, 'Mud Vein', 7.99)",
                 "INSERT INTO author values (12, 'Tarryn', 'Fisher')",
                 "INSERT INTO book2author values (9781497455047, 12)",
+                "INSERT INTO book2category values (9781497455047, 3)",
+                "INSERT INTO book2category values (9781497455047, 1)",
 
                 "INSERT INTO books values (9780316349932, 'Career of Evil', 99.99)",
                 "INSERT INTO author values (13, 'Robert', 'Galbraith')",
                 "INSERT INTO author values (14, 'J.K.', 'Rowling')",
                 "INSERT INTO book2author values (9780316349932, 13)",
                 "INSERT INTO book2author values (9780316349932, 14)",
+                "INSERT INTO book2category values (9780316349932, 4)",
 
                 "INSERT INTO books values (9781417796441, 'The 5th Horseman', 99.99)",
                 "INSERT INTO author values (15, 'James', 'Patterson')",
                 "INSERT INTO author values (16, 'Maxine', 'Paetro')",
                 "INSERT INTO book2author values (9781417796441, 15)",
                 "INSERT INTO book2author values (9781417796441, 16)",
+                "INSERT INTO book2category values (9781417796441, 5)",
 
                 "INSERT INTO books values (9780345505729, 'Victims', 10.99)",
                 "INSERT INTO author values (17, 'Jonathan', 'Kellerman')",
-                "INSERT INTO book2author values (9780345505729, 17)"
-        );
+                "INSERT INTO book2author values (9780345505729, 17)",
+                "INSERT INTO book2category values (9780345505729, 1)"
+
+                );
         try {
             Statement statement = connection.createStatement();
             for (String sqlInsert : sqlInserts) {
