@@ -56,4 +56,23 @@ public class BookDaoImpl implements BookDao {
             throw new BookNotFoundException();
         }
     }
+
+    @Override
+    public List<Book> getBooksByCategory(int category) throws NoBooksException {
+        String sql = "SELECT * FROM book2category WHERE category = ?";
+        List<Book> list = new LinkedList<>();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet books = preparedStatement.executeQuery();
+            while (books.next()) {
+                String isbn = books.getString("isbn");
+                String title = books.getString("title");
+                double price = books.getDouble("price");
+                list.add(new Book(isbn, title, price));
+            }
+        } catch (SQLException e) {
+            throw new NoBooksException();
+        }
+        return list;
+    }
 }

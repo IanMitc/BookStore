@@ -2,16 +2,25 @@ package org.example.UI.Menus;
 
 import org.example.Data.BookDao;
 import org.example.Data.DaoFactory;
+import org.example.Data.Exceptions.NoBooksException;
 import org.example.Objects.Book;
 import org.example.UI.Utility.Ask;
 import org.example.UI.Utility.Clear;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowBooksFromCategoryMenu {
     public static void show(int category) {
         BookDao bookDao = DaoFactory.getBookDao();
-        List<Book> books = bookDao.getBooksByCatagory(category);
+        List<Book> books;
+
+        try {
+            books = bookDao.getBooksByCategory(category);
+        } catch (NoBooksException e) {
+            //e.printStackTrace();
+            books = new ArrayList<>();
+        }
 
         boolean run = true;
         while (run) {
@@ -22,7 +31,7 @@ public class ShowBooksFromCategoryMenu {
             System.out.println("0 - Go Back");
             System.out.println("99 - View Cart");
 
-            int selection = 0;
+            int selection;
             try {
                 selection = Ask.forInt("Select a book for more information");
             } catch (Exception e) {

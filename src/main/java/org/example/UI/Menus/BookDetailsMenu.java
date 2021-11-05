@@ -12,7 +12,7 @@ public class BookDetailsMenu {
         boolean run = true;
         while (run) {
 
-            System.out.println(book.getDetails());
+            System.out.println(book);
 
             System.out.println();
             System.out.println("0 - Go Back");
@@ -41,4 +41,4 @@ public class BookDetailsMenu {
         }
     }
 }
-}
+

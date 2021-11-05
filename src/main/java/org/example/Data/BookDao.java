@@ -10,5 +10,7 @@ public interface BookDao {
 
     List<Book> getBooks() throws NoBooksException;
 
-    Book getBook(String isbn) throws BookNotFoundException, BookNotFoundException;
+    Book getBook(String isbn) throws BookNotFoundException;
+
+    List<Book> getBooksByCategory(int category) throws NoBooksException;
 }
