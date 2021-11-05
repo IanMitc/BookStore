@@ -18,92 +18,67 @@ public class Database {
         Connection connection = ConnectionFactory.getConnection();
         List<String> sqlInserts = new ArrayList<>();
         Collections.addAll(sqlInserts,
-                "INSERT INTO category values (1, '')",
-                "INSERT INTO category values (1, 'Romance')",
-                "INSERT INTO category values (2, 'Hardcore Bizarro Fiction')",
-                "INSERT INTO category values (3, 'Spoetry')",
-                "INSERT INTO category values (4, 'Cashier Memoir')",
-                "INSERT INTO category values (5, 'Oulipo Literature')",
-
                 "INSERT INTO books values (9788433928016, 'Silk', 14.99)",
                 "INSERT INTO author values (1, 'Alessandro', 'Baricco')",
                 "INSERT INTO book2author values (9788433928016, 1)",
-                "INSERT INTO book2category values (9788433928016, 2)",
-                "INSERT INTO book2category values (9788433928016, 1)",
 
                 "INSERT INTO books values (9780590198592, 'Lioness Rampant', 9.95)",
                 "INSERT INTO author values (2, 'Tamora', 'Pierce')",
                 "INSERT INTO book2author values (9780590198592, 2)",
-                "INSERT INTO book2category values (9780590198592, 1)",
 
                 "INSERT INTO books values (9780345805249, 'This Is How You Lose Her', 19.37)",
                 "INSERT INTO author values (3, 'Junot', 'Diaz')",
                 "INSERT INTO book2author values (9780345805249, 3)",
-                "INSERT INTO book2category values (9780345805249, 2)",
-                "INSERT INTO book2category values (9780345805249, 5)",
-                "INSERT INTO book2category values (9780345805249, 4)",
 
-                "INSERT INTO books values (9780425289006, 'George Washingtons Secret Six', 21.50)",
+                "INSERT INTO books values (9780425289006, 'George Washington's Secret Six: The Spy Ring That Saved the American Revolution', 21.50)",
                 "INSERT INTO author values (4, 'Brian', 'Kilmeade')",
                 "INSERT INTO author values (5, 'Don', 'Yaeger')",
                 "INSERT INTO book2author values (9780425289006, 4)",
                 "INSERT INTO book2author values (9780425289006, 5)",
-                "INSERT INTO book2category values (9780425289006, 3)",
 
                 "INSERT INTO books values (9781400031511, 'One Step Behind', 9.99)",
                 "INSERT INTO author values (6, 'Henning', 'Mankell')",
                 "INSERT INTO author values (7, 'Ebba', 'Segerberg')",
                 "INSERT INTO book2author values (9781400031511, 6)",
                 "INSERT INTO book2author values (9781400031511, 7)",
-                "INSERT INTO book2category values (9781400031511, 2)",
 
                 "INSERT INTO books values (9780751557053, 'Galveston', 10.99)",
                 "INSERT INTO author values (8, 'Nic', 'Pizzolatto')",
                 "INSERT INTO book2author values (9780751557053, 8)",
-                "INSERT INTO book2category values (9780751557053, 4)",
 
                 "INSERT INTO books values (9780316109697, 'Julie and Julia: 365 Days, 524 Recipes, 1 Tiny Apartment Kitchen', 19.99)",
                 "INSERT INTO author values (9, 'Julie', 'Powell')",
                 "INSERT INTO book2author values (9780316109697, 9)",
-                "INSERT INTO book2category values (9780316109697, 1)",
-                "INSERT INTO book2category values (9780316109697, 5)",
 
                 "INSERT INTO books values (9780007255306, 'Wicked Lovely', 19.99)",
                 "INSERT INTO author values (10, 'Melissa', 'Marr')",
                 "INSERT INTO book2author values (9780007255306, 10)",
-                "INSERT INTO book2category values (9780007255306, 3)",
 
                 "INSERT INTO books values (9780671028374, 'Fatal Voyage', 19.99)",
                 "INSERT INTO author values (11, 'Kathy', 'Reichs')",
                 "INSERT INTO book2author values (9780671028374, 11)",
-                "INSERT INTO book2category values (9780671028374, 5)",
 
                 "INSERT INTO books values (9781497455047, 'Mud Vein', 7.99)",
                 "INSERT INTO author values (12, 'Tarryn', 'Fisher')",
                 "INSERT INTO book2author values (9781497455047, 12)",
-                "INSERT INTO book2category values (9781497455047, 3)",
-                "INSERT INTO book2category values (9781497455047, 1)",
 
                 "INSERT INTO books values (9780316349932, 'Career of Evil', 99.99)",
                 "INSERT INTO author values (13, 'Robert', 'Galbraith')",
                 "INSERT INTO author values (14, 'J.K.', 'Rowling')",
                 "INSERT INTO book2author values (9780316349932, 13)",
                 "INSERT INTO book2author values (9780316349932, 14)",
-                "INSERT INTO book2category values (9780316349932, 4)",
 
                 "INSERT INTO books values (9781417796441, 'The 5th Horseman', 99.99)",
                 "INSERT INTO author values (15, 'James', 'Patterson')",
                 "INSERT INTO author values (16, 'Maxine', 'Paetro')",
                 "INSERT INTO book2author values (9781417796441, 15)",
                 "INSERT INTO book2author values (9781417796441, 16)",
-                "INSERT INTO book2category values (9781417796441, 5)",
 
                 "INSERT INTO books values (9780345505729, 'Victims', 10.99)",
                 "INSERT INTO author values (17, 'Jonathan', 'Kellerman')",
                 "INSERT INTO book2author values (9780345505729, 17)",
-                "INSERT INTO book2category values (9780345505729, 1)"
 
-        );
+                "");
         try {
             Statement statement = connection.createStatement();
             for (String sqlInsert : sqlInserts) {
@@ -111,7 +86,7 @@ public class Database {
             }
             statement.executeBatch();
         } catch (SQLException e) {
-            //e.printStackTrace();
+            //System.out.println(e.getSQLState());
         }
     }
 
@@ -120,45 +95,43 @@ public class Database {
 
         String getTablesSql = "show tables";
         String createAuthorTableSql = "CREATE TABLE `author` (" +
-                "`Id` int NOT NULL AUTO_INCREMENT," +
-                "`FirstName` varchar(50) DEFAULT NULL," +
-                "`LastName` varchar(50) DEFAULT NULL," +
-                "PRIMARY KEY (`Id`)" +
+                "  `Id` int NOT NULL AUTO_INCREMENT," +
+                "  `FirstName` varchar(50) DEFAULT NULL," +
+                "  `LastName` varchar(50) DEFAULT NULL," +
+                "  PRIMARY KEY (`Id`)" +
                 ")";
         String createBooksTableSql = "CREATE TABLE `books` (" +
-                "`Isbn` varchar(50) NOT NULL," +
-                "`Title` varchar(255) DEFAULT NULL," +
-                "`Price` double(10,2) DEFAULT NULL," +
-                "PRIMARY KEY (`Isbn`)" +
+                "  `Isbn` int(13) NOT NULL," +
+                "  `Title` varchar(255) DEFAULT NULL," +
+                "  `Price` double(10,2) DEFAULT NULL," +
+                "  PRIMARY KEY (`Isbn`)" +
                 ")";
         String createCategoryTableSql = "CREATE TABLE `category` (" +
-                "`Id` int NOT NULL AUTO_INCREMENT," +
-                "`Category` varchar(50) DEFAULT NULL," +
-                "PRIMARY KEY (`Id`)" +
+                "  `Id` int NOT NULL AUTO_INCREMENT," +
+                "  `Category` varchar(50) DEFAULT NULL," +
+                "  PRIMARY KEY (`Id`)" +
                 ")";
         String createBook2CatagorySql = "CREATE TABLE `book2category` (" +
-                "`Book_id` varchar(50) NOT NULL," +
-                "`Category_id` int NOT NULL," +
-                "KEY `Book_id` (`Book_id`)," +
-                "KEY `Category_id` (`Category_id`)," +
-                "PRIMARY KEY (`Book_id`, `Category_id`)," +
-                "CONSTRAINT `book2category_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
-                "CONSTRAINT `book2category_ibfk_2` FOREIGN KEY (`Category_id`) REFERENCES `category` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
+                "  `Book_id` varchar(50) NOT NULL," +
+                "  `Category_id` int NOT NULL," +
+                "  KEY `Book_id` (`Book_id`)," +
+                "  KEY `Category_id` (`Category_id`)," +
+                "  CONSTRAINT `book2category_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`)," +
+                "  CONSTRAINT `book2category_ibfk_2` FOREIGN KEY (`Category_id`) REFERENCES `category` (`Id`)" +
                 ")";
         String createBook2AuthorTable = "CREATE TABLE `book2author` (" +
-                "`Book_id` varchar(50) NOT NULL," +
-                "`Author_id` int NOT NULL," +
-                "KEY `Book_id` (`Book_id`)," +
-                "KEY `Author_id` (`Author_id`)," +
-                "PRIMARY KEY (`Book_id`, `Author_id`)," +
-                "CONSTRAINT `book2author_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`) ON DELETE CASCADE ON UPDATE CASCADE," +
-                "CONSTRAINT `book2author_ibfk_2` FOREIGN KEY (`Author_id`) REFERENCES `author` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE" +
+                "  `Book_id` varchar(50) NOT NULL," +
+                "  `Author_id` int NOT NULL," +
+                "  KEY `Book_id` (`Book_id`)," +
+                "  KEY `Author_id` (`Author_id`)," +
+                "  CONSTRAINT `book2author_ibfk_1` FOREIGN KEY (`Book_id`) REFERENCES `books` (`Isbn`)," +
+                "  CONSTRAINT `book2author_ibfk_2` FOREIGN KEY (`Author_id`) REFERENCES `author` (`Id`)" +
                 ")";
         String createUserTableSql = "CREATE TABLE `user` (" +
-                "`Id` int NOT NULL AUTO_INCREMENT," +
-                "`Username` varchar(50) DEFAULT NULL," +
-                "`Password` varchar(50) DEFAULT NULL," +
-                "PRIMARY KEY (`Id`)" +
+                "  `Id` int NOT NULL AUTO_INCREMENT," +
+                "  `Username` varchar(50) DEFAULT NULL," +
+                "  `Password` varchar(50) DEFAULT NULL," +
+                "  PRIMARY KEY (`Id`)" +
                 ")";
 
         try (Statement statement = connection.createStatement()) {

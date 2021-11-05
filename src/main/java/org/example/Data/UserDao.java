@@ -1,9 +1,13 @@
 package org.example.Data;
 
+import org.example.Data.Exceptions.UserNotFoundException;
+import org.example.Data.Exceptions.DuplicateUserException;
+import org.example.Objects.User;
+
 public interface UserDao {
 
-    void addUser(String username, String password);
+    void addUser(String username, String password) throws DuplicateUserException, DuplicateUserException;
 
-    boolean verifyUser(String username, String password);
+    User getUser(String username) throws UserNotFoundException;
 
 }
