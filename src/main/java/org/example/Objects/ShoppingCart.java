@@ -1,14 +1,14 @@
 package org.example.Objects;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ShoppingCart {
     private static List<Book> books;
     private static ShoppingCart shoppingCart = null;
 
     private ShoppingCart() {
-        books = new ArrayList<>();
+        Set<Book> books = new TreeSet<Book>() {
+        };
     }
 
     public static ShoppingCart getShoppingCart() {
@@ -38,5 +38,9 @@ public class ShoppingCart {
 
     public void removeBook(Book book) {
         books.remove(book);
+    }
+
+    public void removeAll() {
+        books = new ArrayList<>();
     }
 }

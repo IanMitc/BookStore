@@ -32,12 +32,11 @@ public class CustomerMenu {
                     shoppingCart = null;
                     return;
                 }
-                case 0 -> run = false;
-                case 1 -> RomanceMenu.show();
-                case 2 -> FictionMenu.show();
-                case 3 -> SpoetryMenu.show();
-                case 4 -> CashierMemoirMenu.show();
-                case 5 -> OulipoMenu.show();
+                case 1 -> ShowFromCategoryMenu.show(1);
+                case 2 -> ShowFromCategoryMenu.show(2);
+                case 3 -> ShowFromCategoryMenu.show(3);
+                case 4 -> ShowFromCategoryMenu.show(4);
+                case 5 -> ShowFromCategoryMenu.show(5);
                 case 99 -> ShoppingCartMenu.show();
                 default -> System.out.println("\nPlease make a valid selection.\n");
             }
