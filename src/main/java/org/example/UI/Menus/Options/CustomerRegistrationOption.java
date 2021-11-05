@@ -1,4 +1,4 @@
-package org.example.UI.Menus.Customer.Options;
+package org.example.UI.Menus.Options;
 
 import org.example.Data.DaoFactory;
 import org.example.Data.UserDao;

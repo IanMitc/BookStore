@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.Data.Database;
-import org.example.UI.Menus.Shared.MainMenu;
+import org.example.UI.Menus.MainMenu;
 
 /**
  * Hello world!

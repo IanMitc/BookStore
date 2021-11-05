@@ -1,16 +1,17 @@
-package org.example.UI.Menus.Customer;
+package org.example.UI.Menus;
 
 import org.example.Data.BookDao;
 import org.example.Data.DaoFactory;
 import org.example.Objects.Book;
 import org.example.UI.Utility.Ask;
+import org.example.UI.Utility.Clear;
 
 import java.util.List;
 
-public class ShowFromCategoryMenu {
+public class ShowBooksFromCategoryMenu {
     public static void show(int category) {
         BookDao bookDao = DaoFactory.getBookDao();
-        List<Book> books = bookDao.getBooks(category);
+        List<Book> books = bookDao.getBooksByCatagory(category);
 
         boolean run = true;
         while (run) {
@@ -18,23 +19,30 @@ public class ShowFromCategoryMenu {
             for (Book book : books) {
                 System.out.println(i++ + ".\n" + book);
             }
-            int selection = 0;
+            System.out.println("0 - Go Back");
+            System.out.println("99 - View Cart");
 
+            int selection = 0;
             try {
-                selection = Ask.forInt("Select a book for more information (99 to View Your Shopping Cart, 0 to Go Back)");
+                selection = Ask.forInt("Select a book for more information");
             } catch (Exception e) {
+                Clear.console();
                 System.out.println(e.getMessage());
                 continue;
             }
 
             switch (selection) {
-                case 0 -> run = false;
+                case 0 -> {
+                    Clear.console();
+                    run = false;
+                }
                 case 99 -> ShoppingCartMenu.show();
             }
 
-            if (selection < books.size() && selection > 0) {
+            if (selection <= books.size() && selection > 0) {
                 BookDetailsMenu.show(books.get(selection - 1));
             } else {
+                Clear.console();
                 System.out.println("Please make a valid Selection");
             }
         }

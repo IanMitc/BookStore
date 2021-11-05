@@ -1,18 +1,18 @@
-package org.example.UI.Menus.Shared;
+package org.example.UI.Menus;
 
-import org.example.UI.Menus.Customer.Options.CustomerRegistrationOption;
-import org.example.UI.Menus.Shared.Options.ExitOption;
-import org.example.UI.Menus.Shared.Options.LoginOption;
+import org.example.UI.Menus.Options.CustomerRegistrationOption;
+import org.example.UI.Menus.Options.ExitOption;
+import org.example.UI.Menus.Options.LoginOption;
 import org.example.UI.Utility.Ask;
 import org.example.UI.Utility.Clear;
 
 public class MainMenu {
 
     public static void show() {
+        Clear.console();
         boolean run = true;
         while (run) {
             int selection;
-            Clear.console();
 
             System.out.println("\nWelcome to The Book Store\n\n");
 
@@ -22,6 +22,7 @@ public class MainMenu {
             try {
                 selection = Ask.forInt("Select Option");
             } catch (Exception e) {
+                Clear.console();
                 System.out.println(e.getMessage());
                 continue;
             }
@@ -33,7 +34,10 @@ public class MainMenu {
                     run = false;
                     ExitOption.execute();
                 }
-                default -> System.out.println("\nPlease make a valid selection.\n");
+                default -> {
+                    Clear.console();
+                    System.out.println("\nPlease make a valid selection.\n");
+                }
             }
         }
     }

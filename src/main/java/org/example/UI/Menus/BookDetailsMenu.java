@@ -1,8 +1,9 @@
-package org.example.UI.Menus.Customer;
+package org.example.UI.Menus;
 
 import org.example.Objects.Book;
 import org.example.Objects.ShoppingCart;
 import org.example.UI.Utility.Ask;
+import org.example.UI.Utility.Clear;
 
 public class BookDetailsMenu {
     public static void show(Book book) {
@@ -14,11 +15,13 @@ public class BookDetailsMenu {
             System.out.println(book.getDetails());
 
             System.out.println();
+            System.out.println("0 - Go Back");
             System.out.println("1 - Add to Cart");
+            System.out.println("99 - View Cart");
 
             int selection;
             try {
-                selection = Ask.forInt("Select Option (99 to View Your Shopping Cart, 0 to Go Back)");
+                selection = Ask.forInt("Select Option");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 continue;
@@ -28,6 +31,8 @@ public class BookDetailsMenu {
                 case 0 -> run = false;
                 case 1 -> {
                     shoppingCart.addBook(book);
+                    Clear.console();
+                    System.out.println("Book added to Cart");
                     run = false;
                 }
                 case 99 -> ShoppingCartMenu.show();

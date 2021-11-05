@@ -1,7 +1,8 @@
-package org.example.UI.Menus.Customer;
+package org.example.UI.Menus;
 
 import org.example.Objects.Book;
 import org.example.Objects.ShoppingCart;
+import org.example.UI.Menus.Options.CheckoutOption;
 import org.example.UI.Utility.Ask;
 import org.example.UI.Utility.Clear;
 
@@ -20,13 +21,14 @@ public class ShoppingCartMenu {
             }
             System.out.printf("\t\t\t\tTotal:\n\t\t\t\t\t%.2f\n", shoppingCart.getTotal());
             System.out.println();
+            System.out.println("0 - Continue Shopping");
             System.out.println("1 - Remove Book from Cart");
             System.out.println("2 - Remove All from Cart");
             System.out.println("3 - Checkout");
 
             int selection;
             try {
-                selection = Ask.forInt("Select Option (0 to Go Back)");
+                selection = Ask.forInt("Select Option");
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 continue;
@@ -36,7 +38,7 @@ public class ShoppingCartMenu {
                 case 0 -> run = false;
                 case 1 -> RemoveBookMenu.show();
                 case 2 -> shoppingCart.removeAll();
-                case 3 -> CheckoutMenu.show();
+                case 3 -> CheckoutOption.execute();
                 default -> System.out.println("\nPlease make a valid selection.\n");
             }
         }

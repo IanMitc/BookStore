@@ -1,9 +1,9 @@
-package org.example.UI.Menus.Shared.Options;
+package org.example.UI.Menus.Options;
 
 import org.example.Data.DaoFactory;
 import org.example.Data.UserDao;
 import org.example.Objects.User;
-import org.example.UI.Menus.Customer.CustomerMenu;
+import org.example.UI.Menus.CustomerMenu;
 import org.example.UI.Utility.Ask;
 import org.example.UI.Utility.Clear;
 
