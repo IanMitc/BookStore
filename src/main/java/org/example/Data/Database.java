@@ -151,7 +151,7 @@ public class Database {
                 ")";
         String createUserTableSql = "CREATE TABLE `user` (" +
                 "`Id` int NOT NULL AUTO_INCREMENT," +
-                "`Username` varchar(50) DEFAULT NULL," +
+                "`Username` varchar(50) UNIQUE DEFAULT NULL," +
                 "`Password` varchar(50) DEFAULT NULL," +
                 "PRIMARY KEY (`Id`)" +
                 ")";
