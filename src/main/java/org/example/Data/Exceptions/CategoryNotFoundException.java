@@ -1,6 +1,6 @@
 package org.example.Data.Exceptions;
 
-public class CategoryNotFoundException extends Exception{
+public class CategoryNotFoundException extends Exception {
     public CategoryNotFoundException() {
 
     }

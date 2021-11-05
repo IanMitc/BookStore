@@ -1,6 +1,6 @@
 package org.example.Data.Exceptions;
 
-public class AuthorNotFoundException extends Exception{
+public class AuthorNotFoundException extends Exception {
 
     public AuthorNotFoundException() {
     }

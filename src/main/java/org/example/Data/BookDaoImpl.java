@@ -1,7 +1,5 @@
 package org.example.Data;
 
-import org.example.Data.BookDao;
-import org.example.Data.ConnectionFactory;
 import org.example.Data.Exceptions.BookNotFoundException;
 import org.example.Data.Exceptions.NoBooksException;
 import org.example.Objects.Book;
@@ -25,7 +23,7 @@ public class BookDaoImpl implements BookDao {
     public List<Book> getBooks() throws NoBooksException {
         String sql = "select * from books";
         List<Book> list = new LinkedList<>();
-        try{
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet books = preparedStatement.executeQuery();
             while (books.next()) {
@@ -44,7 +42,7 @@ public class BookDaoImpl implements BookDao {
     public Book getBook(String isbn) throws BookNotFoundException {
         String sql = "select * from books where isbn = ?";
         List<Book> list = new LinkedList<>();
-        try{
+        try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, isbn);
             ResultSet books = preparedStatement.executeQuery();
