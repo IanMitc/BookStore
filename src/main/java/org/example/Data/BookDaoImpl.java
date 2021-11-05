@@ -27,9 +27,9 @@ public class BookDaoImpl implements BookDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet books = preparedStatement.executeQuery();
             while (books.next()) {
-                String isbn = books.getString("isbn");
-                String title = books.getString("title");
-                double price = books.getDouble("price");
+                String isbn = books.getString("Isbn");
+                String title = books.getString("Title");
+                double price = books.getDouble("Price");
                 list.add(new Book(isbn, title, price));
             }
         } catch (SQLException e) {
@@ -40,18 +40,16 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public Book getBook(String isbn) throws BookNotFoundException {
-        String sql = "select * from books where isbn = ?";
-        List<Book> list = new LinkedList<>();
+        String sql = "select * from books where Isbn = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, isbn);
             ResultSet books = preparedStatement.executeQuery();
             books.next();
-            String isbn1 = books.getString("isbn");
-            String title = books.getString("title");
-            double price = books.getDouble("price");
+            String isbn1 = books.getString("Isbn");
+            String title = books.getString("Title");
+            double price = books.getDouble("Price");
             return new Book(isbn1, title, price);
-
         } catch (SQLException e) {
             throw new BookNotFoundException();
         }
@@ -59,19 +57,21 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> getBooksByCategory(int category) throws NoBooksException {
-        String sql = "SELECT * FROM book2category WHERE category = ?";
+        String sql = "SELECT * FROM book2category WHERE Category_id = ?";
+        List<Integer> idList = new LinkedList<>();
         List<Book> list = new LinkedList<>();
+
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            ResultSet books = preparedStatement.executeQuery();
-            while (books.next()) {
-                String isbn = books.getString("isbn");
-                String title = books.getString("title");
-                double price = books.getDouble("price");
-                list.add(new Book(isbn, title, price));
+            preparedStatement.setInt(1, category);
+            ResultSet bookIds = preparedStatement.executeQuery();
+            while (bookIds.next()) {
+                list.add(getBook(bookIds.getString("Book_id")));
             }
         } catch (SQLException e) {
             throw new NoBooksException();
+        } catch (BookNotFoundException e) {
+            e.printStackTrace();
         }
         return list;
     }
