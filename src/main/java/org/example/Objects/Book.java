@@ -5,12 +5,12 @@ public class Book {
 
     String ISBN;
     String Title;
-    int price;
+    double price;
 
     public Book() {
     }
 
-    public Book(String ISBN, String title, int price) {
+    public Book(String ISBN, String title, double price) {
         this.ISBN = ISBN;
         Title = title;
         this.price = price;
@@ -32,7 +32,7 @@ public class Book {
         Title = title;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
