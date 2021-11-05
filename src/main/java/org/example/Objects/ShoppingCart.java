@@ -10,8 +10,7 @@ public class ShoppingCart {
     private static ShoppingCart shoppingCart = null;
 
     private ShoppingCart() {
-        Set<Book> books = new TreeSet<Book>() {
-        };
+        books = new ArrayList<>();
     }
 
     public static ShoppingCart getShoppingCart() {
