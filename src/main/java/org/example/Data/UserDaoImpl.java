@@ -1,8 +1,7 @@
-package org.example;
+package org.example.Data;
 
-import org.example.Data.ConnectionFactory;
 import org.example.Data.Exceptions.UserNotFoundException;
-import org.example.Data.UserDao;
+import org.example.Data.Exceptions.DuplicateUserException;
 import org.example.Objects.User;
 
 import java.sql.Connection;
@@ -19,7 +18,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void addUser(String username, String password) throws DuplicateUserException{
+    public void addUser(String username, String password) throws DuplicateUserException {
         try {
             String sql = "insert into user (username, password) values (?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

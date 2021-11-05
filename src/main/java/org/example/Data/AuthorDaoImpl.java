@@ -1,11 +1,7 @@
-package org.example;
+package org.example.Data;
 
-import org.example.Data.CategoryDao;
-import org.example.Data.ConnectionFactory;
 import org.example.Data.Exceptions.AuthorNotFoundException;
-import org.example.Data.Exceptions.CategoryNotFoundException;
 import org.example.Objects.Author;
-import org.example.Objects.Category;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,28 +10,32 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CategoryDaoImpl implements CategoryDao {
+public class AuthorDaoImpl implements AuthorDao {
 
     Connection connection;
 
-    public CategoryDaoImpl() {
+    public AuthorDaoImpl() {
         this.connection = ConnectionFactory.getConnection();
     }
 
     @Override
-    public Category getCategory(int id) throws CategoryNotFoundException {
-        String sql = "select * category where id = ?";
+    public Author getAuthor(int id) throws AuthorNotFoundException {
+        String sql = "select * from author where Id = ?";
+        List<Author> list = new LinkedList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             ResultSet authors = preparedStatement.executeQuery();
 
             id = authors.getInt("id");
-            String firstName = authors.getString("category");
+            String firstName = authors.getString("FirstName");
+            String lastName = authors.getString("LastName");
 
-            return (new Category(id, firstName));
-        } catch(SQLException e) {
-            throw new CategoryNotFoundException();
+            return (new Author(id, firstName, lastName));
+        } catch (SQLException e) {
+            throw new AuthorNotFoundException();
         }
     }
+
 }
+

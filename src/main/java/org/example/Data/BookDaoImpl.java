@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Data;
 
 import org.example.Data.BookDao;
 import org.example.Data.ConnectionFactory;

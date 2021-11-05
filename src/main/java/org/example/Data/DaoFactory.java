@@ -1,10 +1,5 @@
 package org.example.Data;
 
-import org.example.AuthorDaoImpl;
-import org.example.BookDaoImpl;
-import org.example.CategoryDaoImpl;
-import org.example.UserDaoImpl;
-
 public class DaoFactory {
 
     private static AuthorDao authorDao;
@@ -16,7 +11,7 @@ public class DaoFactory {
 
     public static AuthorDao getAuthorDao() {
         if(authorDao == null) {
-            authorDao = (AuthorDao) new AuthorDaoImpl();
+            authorDao = new AuthorDaoImpl();
         }
         return authorDao;
     }

@@ -1,9 +1,10 @@
 package org.example.Data;
 
+import org.example.Data.Exceptions.AuthorNotFoundException;
 import org.example.Objects.Author;
 
 public interface AuthorDao {
 
-    Author getAuthor();
+    public Author getAuthor(int id) throws AuthorNotFoundException;
 
 }
