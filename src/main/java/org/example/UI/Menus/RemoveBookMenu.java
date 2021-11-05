@@ -22,7 +22,7 @@ public class RemoveBookMenu {
             }
             System.out.println("0 - Cancel");
 
-            int selection = 0;
+            int selection;
             try {
                 selection = Ask.forInt("Select a book to remove");
             } catch (Exception e) {
@@ -38,6 +38,8 @@ public class RemoveBookMenu {
 
             if (selection <= books.size() && selection > 0) {
                 RemoveOption.execute(books.get(selection - 1));
+                Clear.console();
+                run = false;
             } else {
                 Clear.console();
                 System.out.println("Please make a valid Selection");
