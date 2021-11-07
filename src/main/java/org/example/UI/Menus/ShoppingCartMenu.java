@@ -11,10 +11,10 @@ import java.util.List;
 public class ShoppingCartMenu {
     public static void show() {
         ShoppingCart shoppingCart = ShoppingCart.getShoppingCart();
+        Clear.console();
 
         boolean run = true;
         while (run) {
-            Clear.console();
             List<Book> books = shoppingCart.getBooks();
 
             for (Book book : books) {

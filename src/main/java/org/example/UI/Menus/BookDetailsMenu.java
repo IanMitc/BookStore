@@ -8,6 +8,7 @@ import org.example.UI.Utility.Clear;
 public class BookDetailsMenu {
     public static void show(Book book) {
         ShoppingCart shoppingCart = ShoppingCart.getShoppingCart();
+        Clear.console();
 
         boolean run = true;
         while (run) {

@@ -21,8 +21,8 @@ public class CheckoutOption {
         }
 
         if (sure) {
-            shoppingCart.removeAll();
             Clear.console();
+            shoppingCart.removeAll();
             System.out.println("Thanks, you should get your shipment sometime after we finally get around to sending it.");
         } else {
             Clear.console();
